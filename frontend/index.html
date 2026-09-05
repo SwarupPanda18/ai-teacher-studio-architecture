@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Teacher Studio</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>AI Human-Like Educator</h1>
+  </header>
+
+  <main class="container">
+    <section class="card" id="config-panel">
+      <h2>1. Lesson Configuration</h2>
+      <form id="setup-form">
+        <label>Upload Study Material (PDF / Notes):</label>
+        <input type="file" id="doc-upload" accept=".pdf">
+
+        <label>Or Topic Directly:</label>
+        <input type="text" id="topic-input" placeholder="e.g. Newton's Laws of Motion">
+
+        <div class="row">
+          <div>
+            <label>Level:</label>
+            <select id="level-select">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+          <div>
+            <label>Duration (Minutes):</label>
+            <input type="number" id="time-input" min="1" max="120" value="10">
+          </div>
+          <div>
+            <label>Language:</label>
+            <select id="lang-select">
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Hinglish">Hinglish</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="btn-generate">Generate AI Lesson</button>
+      </form>
+    </section>
+
+    <section class="classroom-grid" id="classroom" style="display:none;">
+      <div class="stage-container">
+        <div class="holographic-studio">
+          
+          <!-- SEPARATED TEACHER COLUMN -->
+          <div class="teacher-column">
+            <div class="avatar-viewport">
+              <video id="avatar-video" autoplay playsinline></video>
+              <div class="hud-overlay"></div>
+            </div>
+            <!-- Dedicated text area below the video -->
+            <div id="speech-bubble" class="teleprompter-box">AI Teacher script appears here...</div>
+          </div>
+
+          <div class="holo-board sci-fi-ui">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+
+            <div class="hud-data right-panel">
+              <div class="hud-bar"></div>
+              <div class="hud-text">SYS: 88%</div>
+              <div class="hud-bar"></div>
+              <div class="hud-text">MEM: 62%</div>
+            </div>
+            
+            <div class="hud-data left-panel">
+              <div class="hud-text">TARGET ACQUIRED</div>
+              <div class="hud-text">TRACKING...</div>
+            </div>
+
+            <div class="holo-header">
+              <span class="status-indicator">● LIVE TRANSMISSION</span>
+              <span id="holo-step-tag">MODULE 01</span>
+            </div>
+            
+            <div id="holo-visual-target" class="holo-content">
+              <img id="slideshow-img" src="" style="width: 100%; height: 350px; object-fit: cover; border-radius: 8px; transition: opacity 1s ease-in-out; opacity: 0;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="interactive-panel">
+        <div id="checkpoint-container">
+          <h3>Concept Check</h3>
+          <p id="question-text">Question prompt will display here.</p>
+          <div id="options-box" class="options-box"></div>
+          <div id="misconception-box" class="feedback-card" style="display:none;"></div>
+        </div>
+        <button id="btn-next-module" style="display:none;">Proceed to Next Concept →</button>
+      </div>
+    </section>
+
+    <section class="card" id="report-panel" style="display:none;">
+      <h2>Final Learning Report</h2>
+      <div id="report-content" class="report-content">
+        Generating your personalized learning report...
+      </div>
+      <button onclick="location.reload()" style="margin-top: 20px;">Start New Lesson</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
